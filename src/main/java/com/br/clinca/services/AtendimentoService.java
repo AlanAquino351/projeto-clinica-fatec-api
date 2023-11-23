@@ -58,6 +58,19 @@ public class AtendimentoService {
 		return listDTO;
 	}
 
+	public List<AtendimentoDTO> findAll() {
+
+		List<AtendimentoDTO> listDTO = new ArrayList<>();
+
+		List<Atendimento> list = repository.findAll();
+
+		list.stream().forEach(a -> {
+			listDTO.add(new AtendimentoDTO(a));
+		});
+
+		return listDTO;
+	}
+
 	public Atendimento create(AtendimentoDTO atendimentoDTO) {
 		Medico medico = findMedicoByCrm(atendimentoDTO.getMedico().getCrm());
 		Paciente paciente = findPacienteByCPF(atendimentoDTO.getPaciente().getCpf());

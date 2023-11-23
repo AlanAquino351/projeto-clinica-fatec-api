@@ -35,6 +35,11 @@ public class AtendimentoResource {
         return ResponseEntity.ok().body(objDTO);
     }
 
+    @GetMapping()
+    public ResponseEntity<List<AtendimentoDTO>> findAll() {
+        return ResponseEntity.ok().body(service.findAll());
+    }
+
     @GetMapping(value = "/crm/{crm}")
     public ResponseEntity<List<AtendimentoDTO>> findAllByMedico(@PathVariable String crm) {
         return ResponseEntity.ok().body(service.findAllByMedico(crm));
